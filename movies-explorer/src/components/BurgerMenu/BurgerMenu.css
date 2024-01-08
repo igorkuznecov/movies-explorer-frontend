@@ -1,0 +1,122 @@
+.burger-menu {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.2s linear;
+  align-items: center;
+  justify-content: right;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+}
+
+.burger-menu_opened {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.2s, opacity 0.2s linear;
+}
+
+.burger-menu_close-button {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: url(../../images/close.svg) center / 22px no-repeat;
+  background-size: cover;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.burger-menu_close-button:hover {
+  opacity: 0.6;
+}
+
+.burger-menu__container {
+  display: flex;
+  background: #202020;
+  height: 100%;
+  width: 100%;
+  max-width: 520px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 159px 0 90px;
+  box-sizing: border-box;
+}
+
+.burger-menu__nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.burger-menu__nav-element {
+  text-decoration: none;
+  display: block;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: center;
+  list-style-type: none;
+  margin: 0 0 28px 0;
+  padding: 0;
+  color: #FFF;
+}
+
+.burger-menu__nav-element:last-of-type {
+  margin: 0;
+}
+
+.burger-menu__nav-element-active {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+
+.burger-menu__user {
+  display: flex;
+}
+
+.burger-menu__link {
+  display: flex;
+  text-decoration: none;
+  color: #FFF;
+}
+
+.burger-menu__user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0.9;
+}
+
+.burger-menu__user-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 7px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1)
+}
+
+.burger-menu__user-img {
+  width: 11px;
+  height: 11px;
+}
+
