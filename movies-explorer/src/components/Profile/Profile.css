@@ -1,0 +1,131 @@
+.profile {
+  padding-top: 74px;
+  background: #202020;
+  height: calc(100vh - 74px);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.profile__title {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #fff;
+  margin: 74px 0 0 0;
+}
+
+.profile__form {
+  display: grid;
+  max-width: 410px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  font-family: Inter;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0px;
+  color: #fff;
+}
+
+.profile__input-label {
+  margin: 0;
+  text-align: left;
+  min-width: 205px;
+  padding: 17px 0;
+}
+
+.profile__input-label:first-of-type {
+  border-bottom: 1px solid #424242;
+}
+
+.profile__input {
+  text-align: right;
+  background: #ffffff00;
+  border: none;
+  padding: 17px 0;
+  min-width: 205px;
+  color: #fff;
+}
+.profile__input:focus {
+  outline: none;
+}
+
+.profile__input:first-of-type {
+  border-bottom: 1px solid #424242;
+}
+
+.profile__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin-bottom: 70px;
+
+}
+
+.profile__edit-button {
+  color: #fff;
+  display: block;
+  margin: auto;
+  border: none;
+  background: #ffffff00;
+}
+
+
+.profile__exit-button {
+  color: #EE3465;
+  display: block;
+  margin: auto;
+  border: none;
+  background: #ffffff00;
+}
+
+@media screen and (max-width: 850px) {
+  .profile__title {
+    margin: 236px 0 0 0;
+  }
+
+  .profile__buttons {
+    margin-bottom: 236px;
+  }
+
+  .profile__form {
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .profile {
+    justify-content: start;
+  }
+  .profile__form {
+
+    padding: 80px 30px 0;
+
+  }
+  .profile__input-label {
+    min-width: 100%;
+  }
+  .profile__input {
+    min-width: 100%;
+  }
+  .profile__title {
+    margin: 70px 0 0 0;
+  }
+  .profile__buttons {
+    position: absolute;
+    bottom: 40px;
+
+    margin: auto;
+    width: 100%;
+  }
+}

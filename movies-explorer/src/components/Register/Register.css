@@ -1,0 +1,179 @@
+.register {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  width: 396px;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+.register__top-container {
+  margin-top: 70px;
+}
+
+.register__bottom-container {
+  margin-bottom: 70px;
+}
+
+.register__logo {
+  height: 38px;
+  width: 38px;
+}
+
+.register__title {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #fff;
+  margin: 40px 0;
+}
+
+.register__form {}
+
+.register__label {
+  font-family: Inter;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #fff;
+  margin: 0 0 10px 0;
+  color: #8B8B8B;
+}
+
+.register__input {
+  display: block;
+  width: 100%;
+  height: 46px;
+  margin: 0 0 20px 0;
+  padding: 15px;
+  border: none;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  border-radius: 8px;
+  color: #fff;
+  background-color: #2F2F2F;
+  box-sizing: border-box;
+}
+
+.register__input:focus {
+  outline: none;
+}
+
+.register__input:last-of-type {
+  margin-bottom: 0;
+}
+
+.register__button {
+  display: block;
+  width: 100%;
+  height: 45px;
+  margin: 0 0 16px 0;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background-color: #4285F4;
+  color: #fff;
+}
+
+.register__description {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  color: #8B8B8B;
+}
+
+.register__link {
+  margin-left: 6px;
+  color: #4285F4;
+  text-decoration: none;
+}
+
+.register__warning {
+  font-family: Inter;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #EE3465;
+  margin: 10px 0 0 0;
+}
+
+@media screen and (max-width: 850px) {
+  .register__top-container {
+    margin-top: 232px;
+  }
+
+  .register__bottom-container {
+    margin-bottom: 232px;
+  }
+  .register__button {
+    margin-top: 50px;
+  }
+
+
+}
+
+@media screen and (max-width: 620px) {
+  .register {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .register__top-container {
+    display: flex;
+    flex-direction: column;
+    margin: 56px auto 0;
+    width: 100%;
+    padding: 0 30px;
+    box-sizing: border-box;
+    align-items: stretch;
+  }
+
+
+  .register__bottom-container {
+    padding: 0 30px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  .register__logo {
+    align-self: center;
+  }
+
+  .register__title {
+    margin: 50px auto 80px;
+
+    text-align: center;
+  }
+
+  .register__description {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+    letter-spacing: 0em;
+    color: #8B8B8B;
+  }
+
+  .register__button {
+    margin: 30px 0 14px 0;
+  }
+}
