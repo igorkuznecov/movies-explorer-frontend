@@ -13,13 +13,13 @@ function ReadMoreClick() {
 }
 
   return (
-    <section className='main'>
+    <main className='main'>
       <Promo ReadMoreClick={ReadMoreClick}></Promo>
       <AboutProject></AboutProject>
       <Techs></Techs>
       <AboutMe></AboutMe>
       <Portfolio></Portfolio>
-    </section>
+    </main>
   );
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import './Footer.css';
-import { Location } from 'react-router-dom';
 
 const Footer = ({ isOn }) => {
   if (!isOn) {
@@ -9,18 +8,18 @@ const Footer = ({ isOn }) => {
 
 
   return (
-    <section className='footer'>
+    <footer className='footer'>
       <p className='footer__copyright'>
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
       <div className='footer__nav'>
         <div className='footer__year'>{`© ${new Date().getFullYear()}`}</div>
         <ul className='footer__links'>
-          <li className='footer_link'>Яндекс.Практикум</li>
-          <li className='footer_link'>Github</li>
+          <li className='footer__link'>Яндекс.Практикум</li>
+          <li className='footer__link'>Github</li>
         </ul>
       </div>
-    </section>
+    </footer>
   );
 };
 

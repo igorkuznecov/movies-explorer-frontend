@@ -4,18 +4,18 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 
 const MoviesCardList = () => {
   return (
-    <>
-      <section className='moviescardlist'>
+    <section className='moviescardlist'>
+      <div className='moviescardlist__container'>
         <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>
-      </section>
+      </div>
       <button type='button' aria-label='Еще' className='moviescardlist__button'>
         Еще
       </button>
-    </>
+    </section>
   );
 };
 

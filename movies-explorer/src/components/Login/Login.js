@@ -8,7 +8,7 @@ const Login = () => {
     <section className='login'>
       <div className='login__top-container'>
         <NavLink to='/' className='login__logo'>
-          <img className='login__logo' src={logo} alt='Лого' />
+          <img className='login__logo_pic' src={logo} alt='Лого' />
         </NavLink>
         <h1 className='login__title'>Рады видеть!</h1>
         <form className='login__form'>

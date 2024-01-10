@@ -20,7 +20,7 @@
   transition: visibility 0.2s, opacity 0.2s linear;
 }
 
-.burger-menu_close-button {
+.burger-menu__close-button {
   position: absolute;
   width: 32px;
   height: 32px;
@@ -34,7 +34,7 @@
   margin: 0;
 }
 
-.burger-menu_close-button:hover {
+.burger-menu__close-button:hover {
   opacity: 0.6;
 }
 
@@ -80,9 +80,13 @@
   text-underline-offset: 8px;
 }
 
-
 .burger-menu__user {
   display: flex;
+}
+
+.burger-menu__username {
+  display: flex;
+  align-items: center;
 }
 
 .burger-menu__link {
@@ -119,4 +123,3 @@
   width: 11px;
   height: 11px;
 }
-

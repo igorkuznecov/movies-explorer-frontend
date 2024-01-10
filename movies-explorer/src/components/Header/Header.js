@@ -12,18 +12,18 @@ const Header = ({ isOn, authorized, openBurgerMenu }) => {
 
   if (authorized) {
     return (
-      <section className='header'>
+      <header className='header'>
         <NavLink to='/'>
           <img className='header__logo' alt='Лого' src={logo} />
         </NavLink>
-        <div className='header__nav-section header__nav-section-authorized'>
+        <nav className='header__nav-section header__nav-section-authorized'>
           <NavLink to='/movies' className='header__nav-element'>
             Фильмы
           </NavLink>
           <NavLink to='/saved' className='header__nav-element'>
             Сохраненные фильмы
           </NavLink>
-        </div>
+        </nav>
         <div className='header__user-section'>
           <NavLink to='/profile' className='header__link'>
             <span className='header__user'>Аккаунт</span>
@@ -35,16 +35,15 @@ const Header = ({ isOn, authorized, openBurgerMenu }) => {
         <button
           type='button'
           className='header__burger'
-          name=''
           onClick={openBurgerMenu}
         >
           <img src={Burger} alt='Меню' />
         </button>
-      </section>
+      </header>
     );
   } else {
     return (
-      <section className='header'>
+      <header className='header'>
         <NavLink to='/'>
           <img className='header__logo' src={logo} alt='Лого' />
         </NavLink>
@@ -59,7 +58,7 @@ const Header = ({ isOn, authorized, openBurgerMenu }) => {
             Войти
           </NavLink>
         </div>
-      </section>
+      </header>
     );
   }
 };

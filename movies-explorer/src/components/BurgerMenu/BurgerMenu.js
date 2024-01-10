@@ -5,11 +5,11 @@ import { NavLink } from 'react-router-dom';
 
 export default function BurgerMenu({ onClose, isOpen }) {
   return (
-    <section className={`burger-menu ${isOpen ? 'burger-menu_opened' : ''}`}>
+    <nav className={`burger-menu ${isOpen ? 'burger-menu_opened' : ''}`}>
       <button
         type='button'
         aria-label='Закрыть'
-        className='burger-menu_close-button'
+        className='burger-menu__close-button'
         onClick={onClose}
       />
       <div className='burger-menu__container'>
@@ -47,13 +47,13 @@ export default function BurgerMenu({ onClose, isOpen }) {
         </nav>
         <div className='burger-menu__user'>
           <NavLink to='/profile' className='burger-menu__link'>
-            <span className='burger-menu__user'>Аккаунт</span>
+            <span className='burger-menu__username'>Аккаунт</span>
             <div className='burger-menu__user-img-container'>
               <img className='burger-menu__user-img' alt='Иконка пользователя' src={account_pic} />
             </div>
           </NavLink>
         </div>
       </div>
-    </section>
+    </nav>
   );
 }

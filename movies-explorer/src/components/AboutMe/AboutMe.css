@@ -79,10 +79,11 @@
   object-fit: cover;
   border-radius: 10px;
   background: lightgray 50%;
+  margin-left: 49px;
 }
 
 
-@media screen and (max-width: 1070px) {
+@media screen and (max-width: 850px) {
   .aboutme {
     padding: 90px 50px;
   }
@@ -100,10 +101,9 @@
   .aboutme__picture {
     max-width: 255px;
     max-height: 307px;
+
   }
 }
-
-@media screen and (max-width: 850px) {}
 
 @media screen and (max-width: 620px) {
   .aboutme__content {
@@ -118,7 +118,6 @@
     font-size: 18px;
     font-weight: 400;
     line-height: 21.78px;
-    letter-spacing: -4%;
     padding-bottom: 28px;
     margin: 0 0 60px 0;
   }
