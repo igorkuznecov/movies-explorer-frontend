@@ -1,0 +1,140 @@
+.aboutproject {
+  background-color: #202020;
+  padding: 110px 70px;
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.aboutproject__title {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: 1px solid #DADADA;
+  padding-bottom: 23px;
+  margin: 0;
+}
+
+.aboutproject__textblock {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 70px 0 110px 0;
+}
+
+.aboutproject__text {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.aboutproject__subtext {
+  display: inline-block;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 26px;
+}
+
+.aboutproject__timeline {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.aboutproject__oneweek {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3DDC84;
+  padding: 9px 14px;
+}
+
+.aboutproject__fourweeks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: #303030;
+  padding: 9px 14px;
+}
+
+.aboutproject__timeline-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #8B8B8B;
+  padding: 9px 14px;
+}
+
+@media screen and (max-width: 1070px) {}
+
+@media screen and (max-width: 850px) {
+  .aboutproject {
+    padding: 90px 50px;
+  }
+
+  .aboutproject__subtext {
+    margin-top: 22px;
+  }
+
+  .aboutproject__textblock {
+    margin-bottom: 93px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .aboutproject__textblock {
+    flex-direction: column;
+  }
+  .aboutproject {
+    padding: 70px 18px;
+  }
+  .aboutproject__title {
+    font-size: 18px;
+    padding-bottom: 28px;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+  }
+  .aboutproject__text {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+  }
+  .aboutproject__subtext {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0em;
+    margin-top: 16px;
+
+  }
+  .aboutproject__timeline {
+    grid-template-columns: 1.7fr 3.3fr;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13px;
+    letter-spacing: 0em;
+  }
+  .aboutproject__textblock {
+    display: flex;
+    justify-content: space-between;
+    gap: 56px;
+    margin: 60px 0;
+  }
+}
