@@ -6,8 +6,7 @@
   border-radius: 10px;
   overflow: hidden;
   width: 270px;
-  height: 218px;
-
+  min-height: 218px;
   background: #222222;
   color: #fff;
   box-shadow: 0px 16px 24px 0px #0000000D;
@@ -42,6 +41,7 @@
 }
 
 .moviescard__like {
+  margin-left: 10px;
   width: 16px;
   height: 16px;
 }
@@ -59,11 +59,16 @@
 }
 
 .moviescard__button {
+  cursor: pointer;
   display: flex;
   align-items: center;
   background: #ffffff00;
   border: none;
   padding: 0;
+}
+
+.moviescard__link {
+  width: 100%;
 }
 
 

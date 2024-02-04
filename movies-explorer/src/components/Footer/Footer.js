@@ -6,7 +6,6 @@ const Footer = ({ isOn }) => {
     return;
   }
 
-
   return (
     <footer className='footer'>
       <p className='footer__copyright'>

@@ -9,6 +9,7 @@
 }
 
 .moviescardlist__button {
+  cursor: pointer;
   height: 36px;
   width: 320px;
   font-family: Inter;
@@ -23,6 +24,19 @@
   border-radius: 6px;
   border: 1px solid #424242;
   margin: 50px auto 80px;
+}
+
+.moviescardlist__button:hover {
+  opacity: 0.8;
+}
+
+.moviescardlist__notfound-text {
+  text-align: center;
+  color: #545454;
+  font-family: Inter;
+  font-size: 36px;
+  font-weight: 500;
+
 }
 
 

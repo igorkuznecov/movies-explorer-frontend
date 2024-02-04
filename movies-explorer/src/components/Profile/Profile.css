@@ -73,6 +73,9 @@
 }
 
 .profile__edit-button {
+  cursor: not-allowed;
+  display: block;
+  opacity: 0.3;
   color: #fff;
   display: block;
   margin: auto;
@@ -80,13 +83,27 @@
   background: #ffffff00;
 }
 
+.profile__edit-button_active {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.profile__edit-button_active:hover {
+  opacity: 0.8;
+}
+
 
 .profile__exit-button {
+  cursor: pointer;
   color: #EE3465;
   display: block;
   margin: auto;
   border: none;
   background: #ffffff00;
+}
+
+.profile__exit-button:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 850px) {

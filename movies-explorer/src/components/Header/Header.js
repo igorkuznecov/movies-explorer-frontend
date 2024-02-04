@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Header.css';
 import logo from '../../images/logo.svg';
 import account_pic from '../../images/account_pic.svg';
 import { NavLink } from 'react-router-dom';
 import Burger from '../../images/burger.svg';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 const Header = ({ isOn, authorized, openBurgerMenu }) => {
+  const currentUser = useContext(CurrentUserContext)
+
   if (!isOn) {
-    return;
+    return null;
   }
 
   if (authorized) {
@@ -26,7 +29,7 @@ const Header = ({ isOn, authorized, openBurgerMenu }) => {
         </nav>
         <div className='header__user-section'>
           <NavLink to='/profile' className='header__link'>
-            <span className='header__user'>Аккаунт</span>
+            <span className='header__user'>{currentUser.name}</span>
           </NavLink>
           <div className='header__user-img-container'>
             <img className='header__user-img' alt='Иконка пользователя' src={account_pic} />
@@ -48,11 +51,11 @@ const Header = ({ isOn, authorized, openBurgerMenu }) => {
           <img className='header__logo' src={logo} alt='Лого' />
         </NavLink>
         <div className='header__nav-section header__nav-section_unauthorized'>
-          <NavLink to='/register' className='header__nav-element'>
+          <NavLink to='/signup' className='header__nav-element'>
             Регистрация
           </NavLink>
           <NavLink
-            to='/login'
+            to='/signin'
             className='header__nav-element header__nav-element_button'
           >
             Войти
