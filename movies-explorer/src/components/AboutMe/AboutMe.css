@@ -101,6 +101,7 @@
   .aboutme__picture {
     max-width: 255px;
     max-height: 307px;
+    margin: 0;
 
   }
 }
@@ -129,6 +130,7 @@
     border-radius: 10px;
     background: lightgray 50%;
     margin-bottom: 40px;
+    margin-left: 0;
   }
 
   .aboutme__subtitle {

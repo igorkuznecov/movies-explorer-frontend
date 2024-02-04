@@ -2,31 +2,44 @@ import React, { useContext, useState } from 'react';
 import './Profile.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useFormWithValidation } from '../../utils/validation';
-import { CurrentServerErrorContext } from '../../contexts/CurrentServerErrorContext';
 
 const Profile = ({ handleProfileEdit, handleProfileExit }) => {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState(currentUser.name);
   const [email, setEmail] = useState(currentUser.email);
+  const [emailValidity, setEmailValidity] = useState(false);
+  const [nameValidity, setNameValidity] = useState(false);
 
-  const error = useContext(CurrentServerErrorContext);
   const validation = useFormWithValidation();
 
   function handleEmailChange(e) {
-    validation.handleChange(e)
+    validation.handleChange(e);
     setEmail(e.target.value);
+    if (e.target.value !== currentUser.email) {
+      setEmailValidity(true);
+    } else {
+      setEmailValidity(false);
+    }
   }
 
   function handleNameChange(e) {
-    validation.handleChange(e)
+    validation.handleChange(e);
     setName(e.target.value);
+
+    if (e.target.value !== currentUser.name) {
+      setNameValidity(true);
+    } else {
+      setNameValidity(false);
+    }
   }
 
   function onSubmit(e) {
     e.preventDefault();
-    if (validation.isValid) {
-    handleProfileEdit(name, email);
-  }
+    if (validation.isValid && (emailValidity || nameValidity)) {
+      setEmailValidity(false)
+      setNameValidity(false)
+      handleProfileEdit(name, email)
+    }
   }
 
   function onExit() {
@@ -55,6 +68,7 @@ const Profile = ({ handleProfileEdit, handleProfileExit }) => {
           minLength='2'
           maxLength='40'
           placeholder='Почта'
+          pattern='[^@\s]+@[^@\s]+\.[^@\s]+'
           type='email'
           className='profile__input'
           value={email}
@@ -67,7 +81,7 @@ const Profile = ({ handleProfileEdit, handleProfileExit }) => {
           type='submit'
           aria-label='Редактировать'
           className={
-            validation.isValid
+            (validation.isValid && (emailValidity || nameValidity))
               ? 'profile__edit-button profile__edit-button_active'
               : 'profile__edit-button'
           }

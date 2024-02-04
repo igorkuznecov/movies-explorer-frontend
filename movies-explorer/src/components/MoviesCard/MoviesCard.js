@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import './MoviesCard.css';
-import testPic from '../../images/test_pic.avif';
 import savePic from '../../images/button_dark.svg';
 import deletePic from '../../images/button_green.svg';
 import deletePicInSaved from '../../images/delete_pic.svg';
 import { createMovie, deleteMovie } from '../../utils/MainApi';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const MoviesCard = ({
   movie,
   savedMovies,
+  filterByQuery,
+  searchQuery,
   setSavedMovies,
   setMovies,
-  allMovies,
   renderMovies,
 }) => {
   const [likePic, setLikePic] = useState();
   const location = useLocation();
+
   useEffect(() => {
     if (location.pathname === '/movies') {
       const isSavedCheck = savedMovies.some((i) => i.movieId === movie.id);
@@ -53,11 +54,15 @@ const MoviesCard = ({
       });
     } else {
       deleteMovie(movie._id).then(() => {
-        const newMoviesMassive = allMovies.filter(
+        const newMoviesMassive = savedMovies.filter(
           (item) => item.movieId != movie.movieId
         );
         setMovies(newMoviesMassive);
-        renderMovies(newMoviesMassive);
+        if (searchQuery) {
+          renderMovies(filterByQuery(newMoviesMassive, searchQuery));
+        } else {
+          renderMovies(newMoviesMassive);
+        }
       });
     }
   }

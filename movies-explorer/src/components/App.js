@@ -22,6 +22,9 @@ import { CurrentServerErrorContext } from '../contexts/CurrentServerErrorContext
 import { readError } from '../utils/Errors';
 import ProtectedRouteElement from './ProtectedRoute/ProtectedRoute';
 import { SavedMoviesContext } from '../contexts/SavedMoviesContext';
+import { getMovies } from '../utils/MoviesApi';
+import { getSavedMovies } from '../utils/MainApi';
+import InfoPopup from './InfoPopup/InfoPopup';
 
 function App() {
   const navigate = useNavigate();
@@ -33,6 +36,28 @@ function App() {
   const [isInited, setIsInited] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [currentError, setCurrentError] = useState({});
+
+  const [allMovies, setAllMovies] = useState([]);
+  const [allMoviesLoaded, setAllMoviesLoaded] = useState(false);
+
+  const [savedMovies, setSavedMovies] = useState([]);
+  const [savedMoviesLoaded, setSavedMoviesLoaded] = useState(false);
+
+  const [infoPopupIsOpen, setInfoPopupIsOpen] = useState(false);
+  const [infoPopupMessage, setInfoPopupMessage] = useState('');
+  const [infoPopupIsError, setInfoPopupIsError] = useState(false);
+
+  useEffect(() => {
+    getMovies()
+      .then((res) => {
+        setAllMovies(res);
+      })
+      .then(() => setAllMoviesLoaded(true));
+
+    getSavedMovies()
+      .then((res) => setSavedMovies(res))
+      .then(() => setSavedMoviesLoaded(true));
+  }, []);
 
   function handleServerError(error) {
     setCurrentError({ name: readError(error), visibility: true });
@@ -99,7 +124,15 @@ function App() {
 
   function handleProfileEdit(name, email) {
     setUserInfo(name, email)
-      .then((res) => setCurrentUser(res))
+      .then((res) => {
+        setCurrentUser(res);
+        setInfoPopupIsError(false);
+        setInfoPopupMessage('Ваши данные успешно обновлены');
+        setInfoPopupIsOpen(true);
+        setTimeout(() => {
+          setInfoPopupIsOpen(false);
+        }, 1500);
+      })
       .catch((res) => {
         handleServerError(res);
         console.log(`catch err ${res}`);
@@ -160,7 +193,14 @@ function App() {
               <Route
                 path='/movies'
                 element={
-                  <ProtectedRouteElement element={Movies} isLogged={isLogged} />
+                  <ProtectedRouteElement
+                    element={Movies}
+                    allMovies={allMovies}
+                    savedMovies={savedMovies}
+                    setSavedMovies={setSavedMovies}
+                    isLogged={isLogged}
+                    moviesLoaded={allMoviesLoaded}
+                  />
                 }
               />
               <Route
@@ -168,7 +208,11 @@ function App() {
                 element={
                   <ProtectedRouteElement
                     element={SavedMovies}
+                    allMovies={allMovies}
+                    setSavedMovies={setSavedMovies}
                     isLogged={isLogged}
+                    savedMovies={savedMovies}
+                    savedMoviesLoaded={savedMoviesLoaded}
                   />
                 }
               />
@@ -185,15 +229,28 @@ function App() {
               />
               <Route
                 path='/signin'
-                element={<Login handleLogin={handleLogin} />}
+                element={
+                  <Login handleLogin={handleLogin} isLogged={isLogged} />
+                }
               />
               <Route
                 path='/signup'
-                element={<Register handleRegister={handleRegister} />}
+                element={
+                  <Register
+                    handleRegister={handleRegister}
+                    isLogged={savedMovies}
+                  />
+                }
               />
+
               <Route path='*' element={<NotFound />} />
             </Routes>
             <Footer isOn={footerIsOn}></Footer>
+            <InfoPopup
+              isOpen={infoPopupIsOpen}
+              message={infoPopupMessage}
+              type={infoPopupIsError}
+            ></InfoPopup>
             <BurgerMenu
               isOpen={isBurgerMenuOpened}
               onClose={closeBurgerMenu}

@@ -2,24 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { getMovies } from '../../utils/MoviesApi';
 
-const Movies = () => {
-  const [movies, setMovies] = useState([]);
-  const [moviesLoaded, setMoviesLoaded] = useState(false);
+const Movies = ({ moviesLoaded, allMovies, savedMovies, setSavedMovies }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [thumbState, setThumbState] = useState(true);
-
-  useEffect(() => {
-    getMovies()
-      .then((res) => {
-        setMovies(res);
-      })
-      .then(() => setMoviesLoaded(true));
-  }, []);
-
-  function handleMovieLike() {}
-
+  const [thumbState, setThumbState] = useState(false);
   return (
     <section className='movies'>
       <SearchForm
@@ -29,8 +15,10 @@ const Movies = () => {
         setThumbState={setThumbState}
       ></SearchForm>
       <MoviesCardList
+        savedMovies={savedMovies}
+        setSavedMovies={setSavedMovies}
         searchQuery={searchQuery}
-        movies={movies}
+        movies={allMovies}
         moviesLoaded={moviesLoaded}
         setSearchQuery={setSearchQuery}
         thumbState={thumbState}

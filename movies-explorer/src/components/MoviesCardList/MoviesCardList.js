@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader';
-import { getSavedMovies } from '../../utils/MainApi';
 
 const MoviesCardList = ({
+  savedMovies,
+  setSavedMovies,
   movies,
   setMovies,
   moviesLoaded,
@@ -17,7 +18,6 @@ const MoviesCardList = ({
   const [moviesForRender, setMoviesForRender] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
   const [moviesNotFound, setMoviesNotFound] = useState(false);
-  const [savedMovies, setSavedMovies] = useState([]);
 
   useEffect(() => {
     if (saveResult) {
@@ -26,12 +26,12 @@ const MoviesCardList = ({
         setSearchQuery(savedSearchQuery);
       }
     }
-
     if (moviesLoaded && !searchQuery) {
       renderMovieCards(movies);
     }
+
     return;
-  }, [moviesLoaded, width]);
+  }, [moviesLoaded, width, thumbState]);
 
   function filterByQuery(arr, searchQuery) {
     return arr.filter(function (item) {
@@ -39,13 +39,7 @@ const MoviesCardList = ({
         item.nameRU.toUpperCase().includes(searchQuery.toUpperCase()) ||
         item.nameEN.toUpperCase().includes(searchQuery.toUpperCase())
       ) {
-        if (thumbState) {
-          if (item.duration < 40) {
-            return item;
-          }
-        } else {
-          return item;
-        }
+        return item;
       }
     });
   }
@@ -69,7 +63,17 @@ const MoviesCardList = ({
   }, [width]);
 
   function renderMovieCards(arr) {
-    setMoviesStorage(arr);
+    if (thumbState) {
+      arr = arr.filter(function (item) {
+        if (item.duration < 40) {
+          return item;
+        }
+      });
+      setMoviesStorage(arr);
+    } else {
+      setMoviesStorage(arr);
+    }
+
     const selectedMovies = [];
     let moviesAmount = 0;
 
@@ -126,10 +130,6 @@ const MoviesCardList = ({
     setMoviesForRender(selectedMovies);
   }
 
-  useEffect(() => {
-    getSavedMovies().then((res) => setSavedMovies(res));
-  }, []);
-
   return (
     <section className='moviescardlist'>
       <div className='moviescardlist__container'>
@@ -137,10 +137,13 @@ const MoviesCardList = ({
           !moviesNotFound ? (
             moviesForRender.map((item) => (
               <MoviesCard
-                allMovies={movies}
+                movies={movies}
+                moviesStorage={moviesStorage}
+                searchQuery={searchQuery}
                 setMovies={setMovies}
                 savedMovies={savedMovies}
                 setSavedMovies={setSavedMovies}
+                filterByQuery={filterByQuery}
                 renderMovies={renderMovieCards}
                 movie={item}
                 key={item.id ? item.id : item.movieId}

@@ -1,20 +1,22 @@
 import React, { useContext, useState } from 'react';
 import './Register.css';
 import logo from '../../images/logo.svg';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useFormWithValidation } from '../../utils/validation';
 import { CurrentServerErrorContext } from '../../contexts/CurrentServerErrorContext';
 
-const Register = ({ handleRegister }) => {
+const Register = ({ handleRegister, isLogged }) => {
   const error = useContext(CurrentServerErrorContext)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const validation = useFormWithValidation();
+  const navigate = useNavigate()
 
   function handleEmailChange(e) {
     validation.handleChange(e);
     setEmail(e.target.value);
+    console.log(isLogged)
   }
 
   function handleNameChange(e) {
@@ -32,6 +34,10 @@ const Register = ({ handleRegister }) => {
     if (validation.isValid) {
       handleRegister(password, email, name);
     }
+  }
+
+  if (isLogged) {
+    navigate('/', { replace: false });
   }
 
   return (
@@ -68,6 +74,7 @@ const Register = ({ handleRegister }) => {
             minLength='2'
             maxLength='40'
             type='email'
+            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
             className='register__input'
             value={email}
             onChange={handleEmailChange}

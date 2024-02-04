@@ -32,10 +32,14 @@ const SearchForm = ({
   function thumbClick() {
     if (thumbState) {
       setThumbState(false);
-      localStorage.setItem('thumbState', false);
+      if (saveResult) {
+        localStorage.setItem('thumbState', false);
+      }
     } else {
       setThumbState(true);
-      localStorage.setItem('thumbState', true);
+      if (saveResult) {
+        localStorage.setItem('thumbState', true);
+      }
     }
     console.log(localStorage.getItem('thumbState'));
   }

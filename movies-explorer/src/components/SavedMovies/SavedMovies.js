@@ -1,29 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { getSavedMovies } from '../../utils/MainApi';
 
-const SavedMovies = ( savedMovies ) => {
-
-  const [movies, setMovies] = useState([]);
-  const [moviesLoaded, setMoviesLoaded] = useState(false);
+const SavedMovies = ({ savedMovies, savedMoviesLoaded, setSavedMovies, allMovies }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [thumbState, setThumbState] = useState(false);
 
-  useEffect(() => {
-    getSavedMovies()
-      .then((res) => setMovies(res))
-      .then(() => setMoviesLoaded(true));
-  }, []);
-
-  function handleMovieLike() {
-
-
-  }
-
-  if (!movies) {
-    return
+  if (!savedMovies) {
+    return;
   }
 
   return (
@@ -33,13 +18,14 @@ const SavedMovies = ( savedMovies ) => {
         setSearchQuery={setSearchQuery}
         thumbState={thumbState}
         setThumbState={setThumbState}
-
       ></SearchForm>
       <MoviesCardList
+        savedMovies={savedMovies}
+        setSavedMovies={setSavedMovies}
         searchQuery={searchQuery}
-        movies={movies}
-        setMovies={setMovies}
-        moviesLoaded={moviesLoaded}
+        movies={savedMovies}
+        setMovies={setSavedMovies}
+        moviesLoaded={savedMoviesLoaded}
         setSearchQuery={setSearchQuery}
         thumbState={thumbState}
         saveResult={false}
