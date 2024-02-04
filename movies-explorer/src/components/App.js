@@ -48,6 +48,7 @@ function App() {
   const [infoPopupIsError, setInfoPopupIsError] = useState(false);
 
   useEffect(() => {
+    if (isLogged) {
     getMovies()
       .then((res) => {
         setAllMovies(res);
@@ -57,7 +58,8 @@ function App() {
     getSavedMovies()
       .then((res) => setSavedMovies(res))
       .then(() => setSavedMoviesLoaded(true));
-  }, []);
+    }
+  }, [isLogged]);
 
   function handleServerError(error) {
     setCurrentError({ name: readError(error), visibility: true });
@@ -238,7 +240,7 @@ function App() {
                 element={
                   <Register
                     handleRegister={handleRegister}
-                    isLogged={savedMovies}
+                    isLogged={isLogged}
                   />
                 }
               />
