@@ -49,15 +49,21 @@ function App() {
 
   useEffect(() => {
     if (isLogged) {
-    getMovies()
-      .then((res) => {
-        setAllMovies(res);
-      })
-      .then(() => setAllMoviesLoaded(true));
+      getMovies()
+        .then((res) => {
+          setAllMovies(res);
+        })
+        .then(() => setAllMoviesLoaded(true))
+        .catch((res) => {
+          console.log(`catch err ${res}`);
+        });
 
-    getSavedMovies()
-      .then((res) => setSavedMovies(res))
-      .then(() => setSavedMoviesLoaded(true));
+      getSavedMovies()
+        .then((res) => setSavedMovies(res))
+        .then(() => setSavedMoviesLoaded(true))
+        .catch((res) => {
+          console.log(`catch err ${res}`);
+        });
     }
   }, [isLogged]);
 

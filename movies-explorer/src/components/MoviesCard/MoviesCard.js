@@ -43,27 +43,41 @@ const MoviesCard = ({
     );
 
     if (thisMovieInSaved === undefined && location.pathname === '/movies') {
-      createMovie(movie).then((res) => {
-        setLikePic(deletePic);
-        setSavedMovies([...savedMovies, res]);
-      });
+      createMovie(movie)
+        .then((res) => {
+          setLikePic(deletePic);
+          setSavedMovies([...savedMovies, res]);
+        })
+        .catch((res) => {
+          console.log(`catch err ${res}`);
+        });
     } else if (location.pathname === '/movies') {
-      deleteMovie(thisMovieInSaved._id).then(() => {
-        setLikePic(savePic);
-        setSavedMovies(savedMovies.filter((item) => item.movieId != movie.id));
-      });
+      deleteMovie(thisMovieInSaved._id)
+        .then(() => {
+          setLikePic(savePic);
+          setSavedMovies(
+            savedMovies.filter((item) => item.movieId != movie.id)
+          );
+        })
+        .catch((res) => {
+          console.log(`catch err ${res}`);
+        });
     } else {
-      deleteMovie(movie._id).then(() => {
-        const newMoviesMassive = savedMovies.filter(
-          (item) => item.movieId != movie.movieId
-        );
-        setMovies(newMoviesMassive);
-        if (searchQuery) {
-          renderMovies(filterByQuery(newMoviesMassive, searchQuery));
-        } else {
-          renderMovies(newMoviesMassive);
-        }
-      });
+      deleteMovie(movie._id)
+        .then(() => {
+          const newMoviesMassive = savedMovies.filter(
+            (item) => item.movieId != movie.movieId
+          );
+          setMovies(newMoviesMassive);
+          if (searchQuery) {
+            renderMovies(filterByQuery(newMoviesMassive, searchQuery));
+          } else {
+            renderMovies(newMoviesMassive);
+          }
+        })
+        .catch((res) => {
+          console.log(`catch err ${res}`);
+        });
     }
   }
 
